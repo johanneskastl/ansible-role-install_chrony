@@ -1,0 +1,7 @@
+---
+# install_chrony/tasks/main.yml
+
+- name: 'Install chrony'
+  package:
+    name: 'chrony'
+  when: '(ansible_distribution == "SLES" or ansible_distribution == "openSUSE Leap") and ansible_distribution_major_version > "12"'
