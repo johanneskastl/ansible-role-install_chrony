@@ -18,7 +18,7 @@
   when: 'ansible_distribution == "openSUSE MicroOS"'
 
 - name: 'Install chrony using transactional updates'
-  command: '/usr/sbin/transactional-update pkg install chrony'
+  command: '/usr/sbin/transactional-update -non-interactive pkg install chrony'
   when: 'ansible_distribution == "openSUSE MicroOS" and "is not installed" in check_for_chrony.stdout'
   notify:
     - 'reboot'
