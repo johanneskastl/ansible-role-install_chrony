@@ -5,3 +5,19 @@
   package:
     name: 'chrony'
   when: '(ansible_distribution == "SLES" or ansible_distribution == "openSUSE Leap") and ansible_distribution_major_version > "12"'
+
+- name: 'check if chrony is installed'
+  command:
+  args:
+    cmd: 'rpm -q chrony'
+    warn: 'false'
+  register: 'check_for_chrony'
+  changed_when: 'false'
+  check_mode: 'false'
+  when: 'ansible_distribution == "openSUSE MicroOS" and "is not installed" in check_for_chrony.stdout'
+
+- name: 'Install chrony using transactional updates'
+  command: '/usr/sbin/transactional-update pkg install chrony'
+  when: 'ansible_distribution == "openSUSE MicroOS" and "is not installed" in check_for_chrony.stdout'
+  notify:
+    - 'reboot'
