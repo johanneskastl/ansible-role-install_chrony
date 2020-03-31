@@ -22,3 +22,4 @@
   when: 'ansible_distribution == "openSUSE MicroOS" and "is not installed" in check_for_chrony.stdout'
   notify:
     - 'Reboot'
+    - 'Wait for the machine(s) to be ready again'
