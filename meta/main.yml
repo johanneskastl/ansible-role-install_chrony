@@ -18,6 +18,9 @@ galaxy_info:
   - name: SLES
     versions:
     - all
+  - name: Ubuntu
+    versions:
+    - all
 
   galaxy_tags: []
 
