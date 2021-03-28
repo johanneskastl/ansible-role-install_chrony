@@ -6,6 +6,11 @@
     name: 'chrony'
   when: '(ansible_distribution == "SLES" or ansible_distribution == "openSUSE Leap") and ansible_distribution_major_version > "12"'
 
+- name: 'Install chrony on Debian/Ubuntu'
+  package:
+    name: 'chrony'
+  when: 'ansible_os_family == "Debian"'
+
 - name: 'check if chrony is installed'
   command:
   args:
