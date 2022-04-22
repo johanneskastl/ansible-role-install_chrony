@@ -1,5 +1,6 @@
 galaxy_info:
   role_name: 'install_chrony'
+  namespace: 'johanneskastl'
   author: 'Johannes Kastl'
   description: 'Install chrony'
   company: 'B1 Systems GmbH'
