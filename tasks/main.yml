@@ -4,12 +4,14 @@
 - name: 'Install chrony on SLES15 or openSUSE Leap 15.x'
   package:
     name: 'chrony'
-  when: '(ansible_distribution == "SLES" or ansible_distribution == "openSUSE Leap") and ansible_distribution_major_version > "12"'
+  when:
+    - '(ansible_distribution == "SLES" or ansible_distribution == "openSUSE Leap") and ansible_distribution_major_version > "12"'
 
 - name: 'Install chrony on Debian/Ubuntu'
   package:
     name: 'chrony'
-  when: 'ansible_os_family == "Debian"'
+  when:
+    - 'ansible_os_family == "Debian"'
 
 - name: 'check if chrony is installed'
   command:
@@ -20,7 +22,8 @@
   changed_when: 'false'
   failed_when: 'false'
   check_mode: 'false'
-  when: 'ansible_distribution == "openSUSE MicroOS"'
+  when:
+    - 'ansible_distribution == "openSUSE MicroOS"'
 
 - name: 'Install chrony using transactional updates'
   command: '/usr/sbin/transactional-update --non-interactive pkg install chrony'
