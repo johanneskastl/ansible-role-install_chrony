@@ -1,11 +1,11 @@
 ---
 # install_chrony/tasks/main.yml
 
-- name: 'Install chrony on SLES15 or openSUSE Leap 15.x'
+- name: 'Install chrony (everywhere but on SLES12)'
   package:
     name: 'chrony'
   when:
-    - '(ansible_distribution == "SLES" or ansible_distribution == "openSUSE Leap") and ansible_distribution_major_version > "12"'
+    - 'not (ansible_os_family == "Suse" and ansible_distribution_major_version <= "12")'
 
 - name: 'Install chrony on Debian/Ubuntu'
   package:
