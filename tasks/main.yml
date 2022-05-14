@@ -7,12 +7,6 @@
   when:
     - 'not (ansible_os_family == "Suse" and ansible_distribution_major_version <= "12")'
 
-- name: 'Install chrony on Debian/Ubuntu'
-  ansible.builtin.package:
-    name: 'chrony'
-  when:
-    - 'ansible_os_family == "Debian"'
-
 - name: 'check if chrony is installed'
   ansible.builtin.command:
   args:
