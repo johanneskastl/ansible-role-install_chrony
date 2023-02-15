@@ -6,7 +6,8 @@
     name: 'chrony'
   when:
     - 'not (ansible_os_family == "Suse" and ansible_distribution_major_version <= "12")'
-    - 'ansible_distribution != "openSUSE MicroOS"'
+    - 'ansible_os_family != "openSUSE MicroOS"'
+    - 'ansible_os_family != "openSUSE Leap Micro"'
 
 - name: 'Install chrony with reboot on openSUSE MicroOS'
   ansible.builtin.package:
