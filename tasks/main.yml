@@ -9,11 +9,14 @@
     - 'ansible_os_family != "openSUSE MicroOS"'
     - 'ansible_os_family != "openSUSE Leap Micro"'
 
-- name: 'Install chrony with reboot on openSUSE MicroOS'
+- name: 'Install chrony with reboot on openSUSE MicroOS / openSUSE Leap Micro'
   ansible.builtin.package:
     name: 'chrony'
   when:
-    - 'ansible_distribution == "openSUSE MicroOS"'
+    - '
+      ansible_os_family == "openSUSE MicroOS"
+      or ansible_os_family == "openSUSE MicroOS"
+      '
   notify:
     - 'Reboot'
     - 'Wait for the machine(s) to be ready again'
