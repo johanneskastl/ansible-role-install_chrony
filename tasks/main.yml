@@ -15,7 +15,7 @@
   when:
     - '
       ansible_os_family == "openSUSE MicroOS"
-      or ansible_os_family == "openSUSE MicroOS"
+      or ansible_os_family == "openSUSE Leap Micro"
       '
   notify:
     - 'Reboot'
