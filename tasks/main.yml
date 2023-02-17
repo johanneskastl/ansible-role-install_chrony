@@ -5,7 +5,7 @@
   ansible.builtin.package:
     name: 'chrony'
   when:
-    - 'not (ansible_os_family == "Suse" and ansible_distribution_major_version <= "12")'
+    - 'not (ansible_os_family == "Suse" and ansible_distribution_major_version | int <= 12)'
     - 'ansible_os_family != "openSUSE MicroOS"'
     - 'ansible_os_family != "openSUSE Leap Micro"'
 
