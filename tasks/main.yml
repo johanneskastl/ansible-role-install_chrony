@@ -20,3 +20,6 @@
   notify:
     - 'Reboot'
     - 'Wait for the machine(s) to be ready again'
+
+- name: 'Flush handlers to reboot the system, if needed'
+  ansible.builtin.meta: flush_handlers
