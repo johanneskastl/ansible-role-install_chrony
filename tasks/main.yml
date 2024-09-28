@@ -22,5 +22,14 @@
     - 'Reboot'
     - 'Wait for the machine(s) to be ready again'
 
+- name: 'Install chrony with reboot on Fedora/RedHat CoreOS'
+  community.general.rpm_ostree_pkg:
+    name: 'chrony'
+  when:
+    - 'ansible_os_family == "RedHat" and ansible_pkg_mgr == "atomic_container"'
+  notify:
+    - 'Reboot'
+    - 'Wait for the machine(s) to be ready again'
+
 - name: 'Flush handlers to reboot the system, if needed'
   ansible.builtin.meta: flush_handlers
