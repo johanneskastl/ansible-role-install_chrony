@@ -9,6 +9,13 @@
     - 'not ansible_os_family == "openSUSE MicroOS"'
     - 'not ansible_os_family == "openSUSE Leap Micro"'
     - 'not ansible_pkg_mgr == "atomic_container"'
+    - 'not ansible_os_family == "FreeBSD"'
+
+- name: 'Install chrony-lite on FreeBSD'
+  ansible.builtin.package:
+    name: 'chrony-lite'
+  when:
+    - 'ansible_os_family == "FreeBSD"'
 
 - name: 'Install chrony with reboot on openSUSE MicroOS / openSUSE Leap Micro'
   ansible.builtin.package:
