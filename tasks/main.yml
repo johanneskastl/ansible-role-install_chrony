@@ -7,6 +7,7 @@
   when:
     - 'not (ansible_os_family == "Suse" and ansible_distribution_major_version | int <= 12)'
     - 'not ansible_os_family == "openSUSE MicroOS"'
+    - 'not ansible_distribution == "openSUSE MicroOS"'
     - 'not ansible_os_family == "openSUSE Leap Micro"'
     - 'not ansible_pkg_mgr == "atomic_container"'
     - 'not ansible_os_family == "FreeBSD"'
@@ -23,6 +24,7 @@
   when:
     - '
       ansible_os_family == "openSUSE MicroOS"
+      or ansible_distribution == "openSUSE MicroOS"
       or ansible_os_family == "openSUSE Leap Micro"
       '
   notify:
